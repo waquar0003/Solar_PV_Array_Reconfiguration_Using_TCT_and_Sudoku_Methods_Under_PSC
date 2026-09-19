@@ -1,189 +1,179 @@
-# Solar PV Array Reconfiguration Using TCT and Sudoku Methods Under Partial Shading Conditions
+# TCT and Sudoku PV Array Reconfiguration Under Partial Shading
 
-##  Project Overview
+A MATLAB/Simulink recreation of a research-paper study comparing **Total-Cross-Tied (TCT)** and **Sudoku** photovoltaic (PV) array configurations under Partial Shading Conditions (PSC).
 
-This project focuses on the MATLAB/Simulink modeling and comparative analysis of **Total Cross-Tied (TCT)** and **Sudoku-based PV array configurations** under Partial Shading Conditions (PSC).
+The project applies different irradiance matrices to both PV array configurations and compares their simulated voltage, current, and power characteristics.
 
-Partial shading occurs when different PV modules receive different levels of solar irradiance due to obstacles, clouds, or other environmental conditions. It can cause mismatch losses and multiple peaks in the Power–Voltage (P–V) characteristics, making maximum power extraction more challenging.
+> **Note:** This is an independent MATLAB/Simulink recreation. The simulation plots represent this implementation's outputs and should not be treated as independently verified reproduction of the paper's results.
 
-The main objective of this project is to investigate how Sudoku-based shade dispersion affects the power output of a PV array compared with a conventional TCT configuration under different shading patterns.
+## Project Overview
 
-The simulation is inspired by the research work on Sudoku-based PV array shade dispersion and evaluates both configurations under four partial shading scenarios.
+Partial shading creates non-uniform irradiance across PV modules, resulting in mismatch losses and multiple peaks in the P–V curve.
 
----
+This project models and compares TCT and Sudoku PV array configurations under four partial shading patterns:
 
-##  Project Objectives
+1. Case 1 — Short Wide (SW)
+2. Case 2 — Long Wide (LW)
+3. Case 3 — Short Narrow (SN)
+4. Case 4 — Long Narrow (LN)
 
-* Develop a 9×9 Solar PV array model in MATLAB/Simulink.
-* Implement conventional Total Cross-Tied (TCT) and Sudoku-based PV array configurations.
-* Apply different irradiance matrices to simulate partial shading.
-* Analyze the current, voltage, and power characteristics of both configurations.
-* Compare the P–V characteristics under four shading patterns: Short Wide (SW), Long Wide (LW), Short Narrow (SN), and Long Narrow (LN).
-* Investigate the impact of shade dispersion on PV array power generation.
-
----
-
-##  Tools & Technologies
+## Software Requirements
 
 * MATLAB
 * Simulink
-* MATLAB Function Block
-* Simscape Electrical – PV Array
-* XY Graph for characteristic comparison
+* MATLAB R2025a (used for development)
 
----
+Required toolboxes or additional libraries depend on the blocks used in the model.
 
-##  PV Array Parameters
+## Simulink Model
 
-The simulation uses a user-defined PV module in the Simulink PV Array block.
+The complete MATLAB Simulink model is included in this repository.
 
-| Parameter                      |  Value |
-| ------------------------------ | -----: |
-| Array configuration            |  9 × 9 |
-| Total PV modules               |     81 |
-| Maximum power per module       | 79.2 W |
-| Number of cells per module     |     60 |
-| Open-circuit voltage (Voc)     |   22 V |
-| Short-circuit current (Isc)    |  4.7 A |
-| Voltage at maximum power (Vmp) |   18 V |
-| Current at maximum power (Imp) |  4.4 A |
+**Model file:** `TCT_and_SUDOKU.slx`
 
-### PV Array Model Parameters
+The model contains the irradiance matrix generation block, TCT and Sudoku PV array subsystems, and XY Graphs for comparing the simulation outputs.
 
-![PV Array Parameters](<01. Solar PV Array parameters .png>)
+![Top-level Simulink model](images/top_level_model.png)
 
----
+### Download the Simulink Model
 
-##  System Model & Methodology
+You can download the model directly from this repository:
 
-The Simulink model accepts irradiance values for the PV modules and evaluates the array performance using two configurations: TCT and Sudoku.
+1. Open `TCT_and_SUDOKU.slx` in the repository.
+2. Click **Download raw file** (or the download button).
+3. Save the `.slx` file to your computer.
+4. Open it using MATLAB/Simulink.
 
-A MATLAB Function block defines the irradiance matrices for the four shading cases and separates the 9×9 matrix into nine row-wise signals. These signals are supplied to the corresponding PV array subsystems.
+> GitHub does not display the interactive Simulink model directly in the browser. The `.slx` file must be downloaded and opened in MATLAB/Simulink.
 
-The electrical outputs are processed to obtain current, voltage, and power characteristics, which are displayed using an XY Graph for comparison.
+## How to Run the Simulink Model
 
-### Overall Simulink Model
+Follow these steps to execute the simulation:
 
-![Overall Simulink Model](<02. Model Simulation.png>)
+### Step 1 — Download the Repository
 
-### TCT Configuration
+Download the repository as a ZIP file using GitHub's **Code → Download ZIP** option, or clone it using Git:
 
-The Total Cross-Tied (TCT) configuration connects PV modules in series within each row, with rows cross-connected in parallel. It serves as the conventional configuration for comparison.
+```bash
+git clone https://github.com/Waquar003/Waquar-demo.git
+```
 
-![TCT Subsystem](<03. TCT block.png>)
+Extract the ZIP file if you downloaded it.
 
-### Sudoku Configuration
+### Step 2 — Open MATLAB
 
-The Sudoku configuration uses a shade-dispersion arrangement to redistribute the physical placement of PV modules exposed to different irradiance levels. The aim is to distribute shading more evenly across the array and reduce the adverse effects of non-uniform irradiance.
+Launch MATLAB and set the extracted repository folder as your current working directory.
 
-![Sudoku Subsystem](<04. SUDOKU block.png>)
+### Step 3 — Open the Simulink Model
 
-### Row-Level Sudoku Model
+Open the file `TCT_and_SUDOKU.slx` by double-clicking it or running:
 
-![Row Model in Sudoku](<05. Mdel of row in SUDOKU.png>)
+```matlab
+open_system('TCT_and_SUDOKU.slx')
+```
 
----
+### Step 4 — Select the Irradiance Case
 
-##  Partial Shading Cases
+Inside the Simulink model, locate the `Irr_Matrix` MATLAB Function block.
 
-Four irradiance patterns are simulated to examine the behavior of both array configurations under different spatial distributions of shading.
+Select the desired irradiance matrix corresponding to one of the four partial shading cases (SW, LW, SN, or LN).
 
-| Case   | Shading Pattern   |
-| ------ | ----------------- |
-| Case 1 | Short Wide (SW)   |
-| Case 2 | Long Wide (LW)    |
-| Case 3 | Short Narrow (SN) |
-| Case 4 | Long Narrow (LN)  |
+The block separates the 9×9 irradiance matrix into nine row-wise irradiance signals, which are supplied to the TCT and Sudoku PV array subsystems.
+
+### Step 5 — Run the Simulation
+
+Click the **Run** button in Simulink.
+
+The model simulates the TCT and Sudoku PV array configurations under the selected irradiance distribution.
+
+### Step 6 — Compare the Results
+
+Open the XY Graph blocks to observe and compare the simulated characteristics of both configurations.
+
+Use the graph legends to identify the plotted signals and compare their voltage, current, and power behavior.
+
+## Irradiance Matrix Code
+
+The `Irr_Matrix` MATLAB Function block defines the irradiance matrix for each shading case and separates it into nine row-wise signals for the PV array model.
+
+![Irradiance matrix code](images/irradiance_matrix_code.png)
+
+## PV Array Configurations
+
+### Total-Cross-Tied (TCT) Subsystem
+
+![TCT subsystem](images/tct_subsystem.png)
+
+### Sudoku Subsystem
+
+![Sudoku subsystem](images/sudoku_subsystem.png)
+
+## Simulation Results
+
+The following screenshots show the simulated characteristics obtained for the four partial shading cases.
 
 ### Case 1 — Short Wide (SW)
 
-**Irradiance Matrix**
-
-![Case 1 Irradiance](<06. case1 irradiance.png>)
-
-**Simulation Results**
-
-![Case 1 SW Results](<07. case 1 - Short Wide (SW) result.png>)
+![Case 1 results](images/case1_short_wide.png)
 
 ### Case 2 — Long Wide (LW)
 
-**Irradiance Matrix**
-
-![Case 2 Irradiance](<08. case2 irradiance.png>)
-
-**Simulation Results**
-
-![Case 2 LW Results](<09. case 2 — Long Wide (LW) result.png>)
+![Case 2 results](images/case2_long_wide.png)
 
 ### Case 3 — Short Narrow (SN)
 
-**Irradiance Matrix**
-
-![Case 3 Irradiance](<10. case3 irradiance.png>)
-
-**Simulation Results**
-
-![Case 3 SN Results](<11. case 3 - Short Narrow (SN) result.png>)
+![Case 3 results](images/case3_short_narrow.png)
 
 ### Case 4 — Long Narrow (LN)
 
-**Irradiance Matrix**
+![Case 4 results](images/case4_long_narrow.png)
 
-![Case 4 Irradiance](<12. case4 irradiance.png>)
+## Repository Contents
 
-**Simulation Results**
+```text
+Waquar-demo/
+│
+├── README.md
+├── TCT_and_SUDOKU.slx
+│
+└── images/
+    ├── top_level_model.png
+    ├── irradiance_matrix_code.png
+    ├── tct_subsystem.png
+    ├── sudoku_subsystem.png
+    ├── case1_short_wide.png
+    ├── case2_long_wide.png
+    ├── case3_short_narrow.png
+    └── case4_long_narrow.png
+```
 
-![Case 4 LN Results](<13. case 4 - Long Narrow (LN) result.png>)
+## Key Features
 
----
+* 9×9 PV array modeling
+* TCT and Sudoku PV array configurations
+* Four partial shading irradiance cases
+* MATLAB Function block for irradiance matrix generation
+* Nine row-wise irradiance signals
+* Simulink-based PV array simulation
+* XY Graph-based comparison of simulation outputs
 
-##  Results & Observations
+## Future Improvements
 
-The simulation results provide a comparison of the TCT and Sudoku configurations under the four partial shading scenarios.
+* Add extracted maximum power values for each shading case.
+* Include percentage improvement calculations with a clearly defined baseline.
+* Add the complete research paper citation and DOI.
+* Include additional MPPT algorithms and performance comparisons.
 
-The plotted characteristics allow the following aspects to be investigated:
+## Reference
 
-* Changes in PV array voltage and current under non-uniform irradiance.
-* Differences in the P–V characteristics of TCT and Sudoku configurations.
-* The effect of shading distribution on the maximum power observed in each case.
-* The occurrence of multiple peaks and changes in the power curve under partial shading.
+This project is inspired by the research paper:
 
-In the displayed simulation results, the Sudoku configuration exhibits a higher peak power than the TCT configuration in the four tested cases. The magnitude of the improvement varies with the shading pattern.
+> Enhanced Power Generation From PV Array Under Partial Shading Conditions by Shade Dispersion Using Su Do Ku Configuration
 
-These observations are based on the current simulation model and should not be interpreted as a universal performance guarantee for all PV arrays or shading conditions.
+Please refer to the original publication for the authors, journal/conference details, year, and DOI.
 
----
-
-##  Research Paper Reference
-
-This project is based on the concepts presented in the following research paper:
-
-B. Indu Rani, G. Saravana Ilango, and C. Nagamani, “Enhanced Power Generation From PV Array Under Partial Shading Conditions by Shade Dispersion Using Su Do Ku Configuration,” *IEEE Transactions on Sustainable Energy*, vol. 4, no. 3, pp. 594–601, July 2013.
-
-**DOI:** [10.1109/TSTE.2012.2230033](https://doi.org/10.1109/TSTE.2012.2230033)
-
-[View paper on IEEE Xplore](https://ieeexplore.ieee.org/document/6397935)
-
-The referenced work investigates Sudoku-based shade dispersion in a TCT-connected PV array to improve power generation under partial shading. The present project implements a MATLAB/Simulink model to study and compare TCT and Sudoku configurations under four shading patterns.
-
----
-
-##  Future Scope
-
-* Implement Maximum Power Point Tracking (MPPT) algorithms under partial shading.
-* Investigate Global Maximum Power Point Tracking (GMPPT).
-* Extend the analysis to dynamic shading conditions.
-* Evaluate additional shade-dispersion and PV array reconfiguration techniques.
-* Investigate the combined effect of array reconfiguration and MPPT on maximum power extraction.
-
----
-
-##  Author
+## Author
 
 **Waquar Ahmad**
-Electrical Engineering Student
-Aligarh Muslim University (AMU)
-
-GitHub: [@waquar0003](https://github.com/waquar0003)
-
----
+Electrical Engineering Undergraduate
+Aligarh Muslim University
