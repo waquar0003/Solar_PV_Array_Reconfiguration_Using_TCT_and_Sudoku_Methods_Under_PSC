@@ -1,6 +1,6 @@
 # Solar PV Array Reconfiguration Using TCT and Sudoku Methods Under Partial Shading Conditions
 
-## 📌 Project Overview
+##  Project Overview
 
 This project focuses on the MATLAB/Simulink modeling and comparative analysis of **Total Cross-Tied (TCT)** and **Sudoku-based PV array configurations** under Partial Shading Conditions (PSC).
 
@@ -12,7 +12,7 @@ The simulation is inspired by research on Sudoku-based PV array shade dispersion
 
 ---
 
-## 🎯 Project Objectives
+##  Project Objectives
 
 * Develop a 9×9 Solar PV array model in MATLAB/Simulink.
 * Implement conventional Total Cross-Tied (TCT) and Sudoku-based PV array configurations.
@@ -23,7 +23,7 @@ The simulation is inspired by research on Sudoku-based PV array shade dispersion
 
 ---
 
-## 🛠️ Tools & Technologies
+##  Tools & Technologies
 
 * MATLAB
 * Simulink
@@ -33,7 +33,7 @@ The simulation is inspired by research on Sudoku-based PV array shade dispersion
 
 ---
 
-## ⚡ PV Array Parameters
+##  PV Array Parameters
 
 The simulation uses a user-defined PV module in the Simulink PV Array block.
 
@@ -54,7 +54,7 @@ The simulation uses a user-defined PV module in the Simulink PV Array block.
 
 ---
 
-## 🧩 System Model & Methodology
+##  System Model & Methodology
 
 The Simulink model accepts irradiance values for the PV modules and evaluates array performance using two configurations: TCT and Sudoku.
 
@@ -84,7 +84,7 @@ The Sudoku configuration uses a shade-dispersion arrangement to redistribute the
 
 ---
 
-## 🌤️ Partial Shading Cases
+##  Partial Shading Cases
 
 Four irradiance patterns are simulated to examine the behavior of both array configurations under different spatial distributions of shading.
 
@@ -137,7 +137,7 @@ Four irradiance patterns are simulated to examine the behavior of both array con
 
 ---
 
-## 💻 MATLAB/Simulink Model (.slx)
+##  MATLAB/Simulink Model (.slx)
 
 The complete MATLAB/Simulink model is included in this repository.
 
@@ -145,16 +145,7 @@ The complete MATLAB/Simulink model is included in this repository.
 
 The `.slx` file contains the PV array simulation model used to compare TCT and Sudoku configurations under different partial shading conditions.
 
-### 📥 How to Download the Simulink Model
-
-1. Navigate to the `TCT_and_SUDOKU.slx` file in this repository.
-2. Click on the file name.
-3. Click the **Download raw file** button, or use the download option provided by GitHub.
-4. Save the `.slx` file to your local computer.
-
-> **Note:** GitHub may download `.slx` files instead of displaying them in the browser. This is normal because `.slx` is a MATLAB/Simulink model file, not a browser-readable document.
-
-### ▶️ How to Open and Run the Model
+###  How to Open and Run the Model
 
 1. Install MATLAB with Simulink and the required Simscape Electrical components.
 2. Download `TCT_and_SUDOKU.slx` from this repository.
@@ -164,19 +155,13 @@ The `.slx` file contains the PV array simulation model used to compare TCT and S
 6. Click the **Run** button in Simulink to execute the simulation.
 7. Observe the resulting current, voltage, and power characteristics using the XY Graph blocks.
 
-### ⚙️ Requirements
-
-* MATLAB with Simulink.
-* Simscape Electrical (required for the PV Array components).
-* A MATLAB release compatible with the model.
-
 **Recommended MATLAB Version:** R2025a (the version used for model development).
 
 > If the model does not open or simulate correctly, check that the required Simulink libraries are installed and that the model is compatible with your MATLAB version.
 
 ---
 
-## 📊 Results & Observations
+##  Results & Observations
 
 The simulation results provide a comparison of the TCT and Sudoku configurations under the four partial shading scenarios.
 
@@ -193,7 +178,7 @@ These observations are based on the current simulation model and should not be i
 
 ---
 
-## 📚 Research Paper Reference
+##  Research Paper Reference
 
 This project is based on the concepts presented in the following research paper:
 
@@ -207,17 +192,7 @@ The referenced work investigates Sudoku-based shade dispersion in a TCT-connecte
 
 ---
 
-## 🚀 Future Scope
-
-* Implement Maximum Power Point Tracking (MPPT) algorithms under partial shading.
-* Investigate Global Maximum Power Point Tracking (GMPPT).
-* Extend the analysis to dynamic shading conditions.
-* Evaluate additional shade-dispersion and PV array reconfiguration techniques.
-* Investigate the combined effect of array reconfiguration and MPPT on maximum power extraction.
-
----
-
-## 👨‍💻 Author
+##  Author
 
 **Waquar Ahmad**
 Electrical Engineering Student
